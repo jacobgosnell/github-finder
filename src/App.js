@@ -29,8 +29,8 @@ function App() {
    const searchUsers = async (text) => {
       isLoading(true);
       const res = await axios.get(
-				`https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-			);
+         `https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+      );
       setUsers(res.data.items);
       isLoading(false);
    }
