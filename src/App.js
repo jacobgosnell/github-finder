@@ -35,15 +35,18 @@ function App() {
       isLoading(false);
    }
 
+   // clear Users from state
+   const clearUsers = () => { setUsers([]); isLoading(false); }
+
    return (
-     	<div className="App">
+      <div className="App">
          <Navbar />
          <div className="container">
-            <Search searchUsers={searchUsers} />
+            <Search searchUsers={searchUsers} clearUsers={clearUsers} showClear={users.length > 0 ? true : false }/>
             <Users loading={loading} users={users} />
          </div>
-		</div>
-	);
+      </div>
+   );
 }
 
 export default App;
