@@ -25,11 +25,21 @@ function App() {
       console.log(process.env.REACT_APP_GITHUB_CLIENT_SECRET);
    }, [])
 
+   // search Github Users
+   const searchUsers = async (text) => {
+      isLoading(true);
+      const res = await axios.get(
+				`https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+			);
+      setUsers(res.data.items);
+      isLoading(false);
+   }
+
    return (
      	<div className="App">
          <Navbar />
          <div className="container">
-            <Search />
+            <Search searchUsers={searchUsers} />
             <Users loading={loading} users={users} />
          </div>
 		</div>
